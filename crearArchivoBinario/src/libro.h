@@ -1,15 +1,16 @@
-#ifndef LIBRO_H
-#define LIBRO_H
+#ifndef PERSONA_H
+#define PERSONA_H
 
 #include <string>
 
 using namespace std;
 
-class Libro
+class Persona
 {
-    int id; // 4
-    char nombre[50]; //50
-    char isbn[13]; // 13
+    int ID; 
+    string Nombre; 
+    string Apellido; 
+    string Correo;
 
     public:
     Libro(int id, string nombreLibro, string isbnLibro);
