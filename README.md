@@ -1,6 +1,6 @@
 # Tarea3_2021
 
-# Definición del archivo binario
+# Estructura del archivo binario
 
 | Nombre del campo | Tipo | Tamaño  |
 |---|---|---|
