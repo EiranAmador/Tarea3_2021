@@ -1,63 +1,19 @@
 #include <gtest/gtest.h>
 #include <string>
 
-#include "../src/libro.h"
-#include "../src/escritorLibros.h"
-#include "../src/lectorLibros.h"
-#include "../src/excepciones/excepcionLibroNoExiste.h"
+#include "../src/persona.h"
 
 using namespace std;
 
 namespace {
-    TEST(EscritorTest, Prueba_EscribirUnLibro) {
+
+    TEST(CrearPersona, Prueba_CrearPersona) {
         
-        Libro libroPrueba { 15, "Prueba", "12345" };
+        Persona personaPrueba {123, "Michael", "Jordan", "michael.jordan@mail.com"};
 
-        EscritorLibros escritor {"prueba.dat"};
-        escritor.AgregarLibro(libroPrueba);
-        escritor.Cerrar();
-
-        // Leer el libro de prueba
-        LectorLibros lector {"prueba.dat"};
-        Libro libroLeido = lector.ObtenerLibro(0);
-        lector.Cerrar();
-
-        EXPECT_EQ(libroLeido.getID(), libroPrueba.getID());
-        EXPECT_EQ(libroLeido.getNombre(), libroPrueba.getNombre());
-        EXPECT_EQ(libroLeido.getISBN(), libroPrueba.getISBN());
+        EXPECT_EQ(123, personaPrueba.getID());
+        EXPECT_EQ("Michael", personaPrueba.getNombre());
+        EXPECT_EQ("Jordan", personaPrueba.getApellido());
+        EXPECT_EQ("michael.jordan@mail.com", personaPrueba.getCorreo());
     }
-
-    TEST(EscritorTest, Prueba_GetLibro) {
-        
-        int idLibro {15};
-        string nombreLibro {"Prueba"};
-        string isbn {"12345"};
-
-        Libro libroPrueba { idLibro, nombreLibro, isbn };
-
-        EXPECT_EQ(libroPrueba.getID(), idLibro);
-        EXPECT_EQ(libroPrueba.getNombre(), nombreLibro);
-        EXPECT_EQ(libroPrueba.getISBN(), isbn);
-        
-    }
-
-    TEST(EscritorTest, Prueba_ExcepcionLecturaLibroNoExiste) {
-
-        Libro libroLeido {1, "prueba", "12345"};
-
-        EXPECT_THROW({
-
-            EscritorLibros escritor {"prueba.dat"};
-            escritor.AgregarLibro(libroLeido);
-            escritor.Cerrar();
-
-            // Leer el libro de prueba
-            LectorLibros lector {"prueba.dat"};
-            libroLeido = lector.ObtenerLibro(5);
-            lector.Cerrar();
-
-        }, ExcepcionLibroNoExiste);
-
-    }
-
 }
