@@ -22,9 +22,7 @@ int lectorPersonas::leerPersonas() {
     {
         std::cerr << "Error leyendo archivo " << dirArchivo << std::endl;
         return -1;
-    }
-
-    EscritorPersonas *personas = new EscritorPersonas("personas.dat");
+    }    
     
     std::string linea {}; 
 
@@ -45,8 +43,10 @@ int lectorPersonas::leerPersonas() {
         stream >> ID >> Nombre >> Apellido >> Correo;
 
         Persona *persona = new Persona(ID, Nombre, Apellido, Correo);
-
+ 
+        EscritorPersonas *personas = new EscritorPersonas("personas.dat");
         personas->AgregarPersona(*persona);
+        personas->Cerrar();
     }
 
     ifs.close();
