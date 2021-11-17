@@ -1,23 +1,16 @@
-#ifndef LECTOR_PERSONAS_H
-#define LECTOR_PERSONAS_H
+#ifndef LECTORPERSONAS_H
+#define LECTORPERSONAS_H
 
 #include <string>
-#include "persona.h"
 
-#include <fstream>
+class lectorPersonas{
 
-using namespace std;
-
-class LectorPersonas{
-
-    ifstream archivoEntrada;
+    std::string dirArchivo = "";
 
     public:
-    LectorPersonas(string nombreArchivo);
 
-    Persona ObtenerPersona(int ID);
-    
-    void Cerrar();
+        lectorPersonas(std::string dirArchivo = "../personas.txt");
+        virtual int leerPersonas();
 };
 
 #endif

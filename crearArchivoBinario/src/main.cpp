@@ -1,15 +1,14 @@
 #ifndef UNIT_TEST
 
-#include <iostream>
-#include <fstream>
-
-#include "persona.h"
-#include "string.h"
-#include "./excepciones/excepcionPersonaNoExiste.h"
+#include "../src/lectorPersonas.h"
 
 using namespace std;
 
 int main() {
+
+    lectorPersonas *crearBinario = new lectorPersonas();
+
+    crearBinario->leerPersonas();
 
     return 0;
 }

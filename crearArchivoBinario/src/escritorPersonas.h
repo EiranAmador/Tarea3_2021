@@ -12,7 +12,7 @@ class EscritorPersonas {
     ofstream archivoSalida;
 
     public:
-    EscritorPersonas(std::string nombre);
+    EscritorPersonas(std::string nombreArchivo);
     
     void AgregarPersona(Persona &persona);
     void Cerrar();

@@ -3,9 +3,9 @@
 
 using namespace std;
 
-EscritorPersonas::EscritorPersonas(std::string nombre) {
+EscritorPersonas::EscritorPersonas(std::string nombreArchivo) {
 
-    archivoSalida.open(nombre, ios::out|ios::binary);
+    archivoSalida.open(nombreArchivo, ios::out|ios::binary);
 
     if (!archivoSalida.is_open())
     {

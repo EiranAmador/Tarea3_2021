@@ -1,40 +1,55 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 #include "lectorPersonas.h"
-#include "./excepciones/excepcionNoSePuedeAbrirArchivo.h"
-#include "./excepciones/excepcionPersonaNoExiste.h"
+#include "persona.h"
+#include "escritorPersonas.h"
 
-LectorPersonas::LectorPersonas(string nombreArchivo) {
+using namespace std;
 
-    archivoEntrada.open(nombreArchivo, ios::in|ios::binary);
+lectorPersonas::lectorPersonas(std::string dirArchivo){
 
-    if (!archivoEntrada.is_open())
+    this->dirArchivo = dirArchivo;
+}
+
+int lectorPersonas::leerPersonas() {
+
+    std::ifstream ifs(dirArchivo, std::ifstream::in);
+
+    if (!ifs.is_open())
     {
-        throw new ExcepcionNoSePuedeAbrirArchivo();
+        std::cerr << "Error leyendo archivo " << dirArchivo << std::endl;
+        return -1;
     }
 
-}
+    EscritorPersonas *personas = new EscritorPersonas("personas.dat");
+    
+    std::string linea {}; 
 
-Persona LectorPersonas::ObtenerPersona(int idPersona) {
+    int ID {0};
+    string Nombre {""};
+    string Apellido {""};
+    string Correo {""};
 
-    Persona personaLeida;
+    while (std::getline(ifs, linea)) {
+        
+        std::istringstream stream(linea);
 
-    long posicionPersona = sizeof(Persona) * (idPersona);
+        ID = 0;
+        Nombre = "";
+        Apellido = "";
+        Correo = "";
 
-    archivoEntrada.seekg(0, ios::end);
-    long fileSize = archivoEntrada.tellg();
+        stream >> ID >> Nombre >> Apellido >> Correo;
 
-    if (posicionPersona > fileSize){
+        Persona *persona = new Persona(ID, Nombre, Apellido, Correo);
 
-        throw ExcepcionPersonaNoExiste();
+        personas->AgregarPersona(*persona);
     }
 
-    archivoEntrada.seekg(posicionPersona);
-    archivoEntrada.read((char *) &personaLeida, sizeof(Persona));
+    ifs.close();
 
-    return personaLeida;
-}
-
-void LectorPersonas::Cerrar() {
-    archivoEntrada.close();
+    return 0;
 }
