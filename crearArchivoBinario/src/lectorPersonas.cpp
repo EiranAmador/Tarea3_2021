@@ -44,7 +44,7 @@ int lectorPersonas::leerPersonas() {
 
         Persona *persona = new Persona(ID, Nombre, Apellido, Correo);
  
-        EscritorPersonas *personas = new EscritorPersonas("personas.dat");
+        EscritorPersonas *personas = new EscritorPersonas("../../archivosCompartidos/personas.dat");
         personas->AgregarPersona(*persona);
         personas->Cerrar();
     }
