@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Tarea3_2021
 
 Proyecto desarrollado para el curso: Programación 2
@@ -27,4 +26,3 @@ Desarrollado en Ubuntu 20.04 Linux con Visual Studio Code
 | Nombre | String  | 15  |
 | Apellido  | String  | 15 |
 | Correo  | String  | 50 |
->>>>>>> f4e725dc4e34bda1513d7f4beeac1270538d1c2e
