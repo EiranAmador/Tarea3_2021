@@ -5,7 +5,7 @@ using namespace std;
 
 EscritorPersonas::EscritorPersonas(std::string nombreArchivo) {
 
-    archivoSalida.open(nombreArchivo, ios::out|ios::binary);
+    archivoSalida.open(nombreArchivo, ios_base::binary | ios_base::out | ios_base::app);
 
     if (!archivoSalida.is_open())
     {
