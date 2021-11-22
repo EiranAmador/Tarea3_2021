@@ -9,18 +9,19 @@
 
 using namespace std;
 
-lectorPersonas::lectorPersonas(std::string dirArchivo){
+lectorPersonas::lectorPersonas(std::string dirArchivoTexto, std::string dirArchivoBinario){
 
-    this->dirArchivo = dirArchivo;
+    this->dirArchivoTexto = dirArchivoTexto;
+    this->dirArchivoBinario= dirArchivoBinario;
 }
 
 int lectorPersonas::leerPersonas() {
 
-    std::ifstream ifs(dirArchivo, std::ifstream::in);
+    std::ifstream ifs(dirArchivoTexto, std::ifstream::in);
 
     if (!ifs.is_open())
     {
-        std::cerr << "Error leyendo archivo " << dirArchivo << std::endl;
+        std::cerr << "Error leyendo archivo " << dirArchivoTexto << std::endl;
         return -1;
     }    
     
@@ -44,7 +45,7 @@ int lectorPersonas::leerPersonas() {
 
         Persona *persona = new Persona(ID, Nombre, Apellido, Correo);
  
-        EscritorPersonas *personas = new EscritorPersonas("../../archivosCompartidos/personas.dat");
+        EscritorPersonas *personas = new EscritorPersonas(dirArchivoBinario);
         personas->AgregarPersona(*persona);
         personas->Cerrar();
     }

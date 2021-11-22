@@ -23,7 +23,7 @@ Persona lectorPersonas::leerPersona(int posicion) {
 
     if (!archivoEntrada.is_open())
     {
-        throw ExcepcionNoSePuedeAbrirArchivo();
+        throw new ExcepcionNoSePuedeAbrirArchivo();
     }
 
     Persona personaLeidaDeArchivo;
@@ -35,7 +35,7 @@ Persona lectorPersonas::leerPersona(int posicion) {
 
     if(personaLeidaDeArchivo.getID() == 0){
 
-        throw ExcepcionIdInvalido();
+        throw new ExcepcionIdInvalido();
     }
 
     return personaLeidaDeArchivo;
