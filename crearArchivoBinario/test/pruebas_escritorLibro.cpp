@@ -29,7 +29,7 @@ namespace {
 
     TEST(CrearPersona, Prueba_LeerArchivoTexto) {
         
-        lectorPersonas leerPrueba {"../pruebaTexto.txt","../../archivosCompartidos/test.dat"};
+        lectorPersonas leerPrueba {"../personas.txt"};
         
         int resultado = leerPrueba.leerPersonas();
 

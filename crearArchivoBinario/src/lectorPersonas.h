@@ -5,13 +5,12 @@
 
 class lectorPersonas{
 
-    std::string dirArchivoTexto = "";
-    std::string dirArchivoBinario = "";
+    std::string dirArchivo = "";
 
     public:
 
-        lectorPersonas(std::string dirArchivoTexto = "../personas.txt", std::string dirArchivoBinario = "../../archivosCompartidos/personas.dat");
+        lectorPersonas(std::string dirArchivo = "../personas.txt");
         virtual int leerPersonas();
 };
 
-#endif
+#endif 
